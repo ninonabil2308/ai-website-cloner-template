@@ -7,7 +7,7 @@ This version has breaking changes — APIs, conventions, and file structure may 
 # Website Reverse-Engineer Template
 
 ## What This Is
-A reusable template for reverse-engineering any website and rebuilding it as a faithful clone using Claude Code. The Next.js + shadcn/ui + Tailwind v4 base is pre-scaffolded — just fill in TARGET.md and run `/clone-website`.
+A reusable template for reverse-engineering any website into a clean, modern Next.js codebase using AI coding agents. The Next.js + shadcn/ui + Tailwind v4 base is pre-scaffolded — just run `/clone-website <url1> [<url2> ...]`.
 
 ## Tech Stack
 - **Framework:** Next.js 16 (App Router, React 19, TypeScript strict)
@@ -20,6 +20,8 @@ A reusable template for reverse-engineering any website and rebuilding it as a f
 - `npm run dev` — Start dev server
 - `npm run build` — Production build
 - `npm run lint` — ESLint check
+- `npm run typecheck` — TypeScript check
+- `npm run check` — Run lint + typecheck + build
 
 ## Code Style
 - TypeScript strict mode, no `any`
@@ -57,6 +59,7 @@ scripts/            # Asset download scripts
 
 ## MOST IMPORTANT NOTES
 - When launching Claude Code agent teams, ALWAYS have each teammate work in their own worktree branch and merge everyone's work at the end, resolving any merge conflicts smartly since you are basically serving the orchestrator role and have full context to our goals, work given, work achieved, and desired outcomes.
+- After editing `AGENTS.md`, run `bash scripts/sync-agent-rules.sh` to regenerate platform-specific instruction files.
+- After editing `.claude/skills/clone-website/SKILL.md`, run `node scripts/sync-skills.mjs` to regenerate the skill for all platforms.
 
 @docs/research/INSPECTION_GUIDE.md
-@TARGET.md
